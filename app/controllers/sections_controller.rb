@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
 
   def show
-    @section = Section.find(params[:id])
+    @section = Section.find(params[:chapter_id])
     @lessons = @section.lessons
     render :show
   end
