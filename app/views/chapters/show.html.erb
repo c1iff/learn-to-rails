@@ -3,7 +3,13 @@
 
 <ul>
   <% @sections.each do |s| %>
-  <li> <%= link_to s.name, chapter_section_path(s) %></li>
+  <li>
+    <%= link_to s.name, chapter_section_path(@chapter, s) %>
+    <%= link_to "Edit", edit_chapter_section_path(@chapter, s) %> |
+        <%= link_to "Delete", chapter_section_path(@chapter, s),
+        :data => {:confirm => "Are you sure?",
+          :method => "delete"} %>
+  </li>
   <% end %>
 </ul>
 

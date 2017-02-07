@@ -1,7 +1,7 @@
 class SectionsController < ApplicationController
 
   def show
-    @section = Section.find(params[:chapter_id])
+    @section = Section.find(params[:id])
     @lessons = @section.lessons
     render :show
   end
@@ -20,6 +20,29 @@ class SectionsController < ApplicationController
     else
       puts "didn't work!!!!!!!!!!"
       render :new
+    end
+  end
+
+  def destroy
+    @section = Section.find(params[:id])
+    @chapter = Chapter.find(@section.chapter_id)
+    @section.lessons.each do |l|
+      l.destroy
+    end
+    @section.destroy
+    redirect_to chapter_path(@chapter.id)
+  end
+
+  def edit
+    @section = Section.find(params[:id])
+  end
+
+  def update
+    @section = Section.find(params[:id])
+    if @section.update(section_params)
+      redirect_to chapter_path(@section.chapter_id)
+    else
+      render :edit
     end
   end
 

@@ -1,11 +1,17 @@
 <h1> <%= @section.name %> </h1>
 <ul>
   <% @lessons.each do |l| %>
-  <li> <%= link_to l.name, chapter_section_path(l) %></li>
+  <li>
+    <%= link_to l.name, section_lesson_path(@section.id, l) %>
+    <%= link_to "Edit", edit_section_lesson_path(@section.id, l) %> |
+    <%= link_to "Delete", section_lesson_path(@section.id, l),
+      :data => {:confirm => "Are you sure?",
+        :method => "delete"} %>
+  </li>
   <% end %>
 </ul>
 
-<%= link_to "Add new lesson", new_section_lesson_path(@section.id) %>
+<%= link_to "Add new lesson", new_section_lesson_path(@section) %>
 
 
-<%= link_to "Back", chapter_path(@section.chapter_id) %>
+<%= link_to "Back", chapter_section_path(@section) %>
