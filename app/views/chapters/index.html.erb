@@ -1,0 +1,15 @@
+<h1>Welcome to Learn to Program!</h1>
+
+Current chapters:
+
+<ul>
+  <% @chapters.each do |c| %>
+  <li> <%= link_to c.name, chapter_path(c) %></li>
+      <%= link_to "Edit", edit_chapter_path(c) %> |
+      <%= link_to "Delete", chapter_path(c),
+        :data => {:confirm => "Are you sure?",
+          :method => "delete"} %>
+  <% end %>
+</ul>
+
+<%= link_to "Create new Chapter", new_chapter_path %>

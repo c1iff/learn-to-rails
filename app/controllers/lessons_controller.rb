@@ -1,9 +1,9 @@
 class LessonsController < ApplicationController
-  def index,
+  def index
     render :index
   end
 
-  def show,
+  def show
   end
 
   def new
