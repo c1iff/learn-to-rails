@@ -1,2 +1,13 @@
-<h1>Chapters#show,</h1>
-<p>Find me in app/views/chapters/show,.html.erb</p>
+
+<h1><%= @chapter.name %></h1>
+
+<ul>
+  <% @sections.each do |s| %>
+  <li> <%= link_to s.name, chapter_section_path(s) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Add new section", new_chapter_section_path(@chapter.id) %>
+
+
+<%= link_to "Back", chapters_path %>

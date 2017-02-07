@@ -6,7 +6,8 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
-    @sections = @chapter.sections.to_a
+    @sections = @chapter.sections
+
     render :show
   end
 
