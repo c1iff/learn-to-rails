@@ -10,7 +10,13 @@
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="#">Course</a>
+        <%= link_to "Course", chapters_path, class: "navbar-brand" %>
+        <% if @lesson_number > 1  %>
+        <%= link_to "Previous", section_lesson_path(@lesson.section_id, @lesson.id-1), class: "navbar-brand" %>
+        <% end %>
+        <% if @lesson_number < @lessons.length && @lessons.length > 1 %>
+        <%= link_to "Next", section_lesson_path(@lesson.section_id, @lesson.id+1), class: "navbar-brand" %>
+        <% end %>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Search">
@@ -19,7 +25,6 @@
         </form>
       </div>
     </nav>
-
     <%= yield %>
   </body>
 </html>

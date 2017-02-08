@@ -3,6 +3,6 @@ Rails.application.routes.draw do
     resources :sections
     end
   resources :sections do
-    resources :lessons
+    resources :lessons, except: [:index]
   end
 end

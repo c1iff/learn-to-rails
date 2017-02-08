@@ -1,7 +1,9 @@
 class LessonsController < ApplicationController
-
+  layout "lessons-template", except: [:new, :create, :edit]
   def show
     @lesson = Lesson.find(params[:id])
+    @lessons = Section.find(@lesson.section_id).lessons
+    @lesson_number = @lesson.number
     render :show
   end
 
